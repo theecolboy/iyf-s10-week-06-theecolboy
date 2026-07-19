@@ -120,7 +120,8 @@ node daily-challenges/daily-1.js
 
 ## 🌤️ Mini-Project: Weather Dashboard
 
-A complete weather app built with the **OpenWeatherMap API**.
+A complete weather app. It uses **OpenWeatherMap** when a key is supplied and
+automatically falls back to the free, keyless **Open-Meteo** API otherwise.
 
 **Features**
 1. Search by city name → live weather data.
@@ -129,10 +130,17 @@ A complete weather app built with the **OpenWeatherMap API**.
 3. Robust error handling (invalid city, network issues, bad API key) + loading spinner.
 4. Recent searches saved to `localStorage` (last 5), click to re-search.
 5. **Bonus**
-   - 📅 5-day forecast (`/forecast` endpoint)
+   - 📅 5-day forecast
    - 🌡️ Toggle Celsius / Fahrenheit
    - 📍 Geolocation — weather for current location
    - 🎨 Background gradient changes based on weather condition
+
+**Works out of the box — no API key required!**
+By default the dashboard uses the free, keyless **Open-Meteo** API, so it
+fetches real live weather immediately. Optionally, click the ⚙️ button (or set
+`window.__OWM_API_KEY__` / `OPENWEATHER_API_KEY`) to use **OpenWeatherMap**
+instead. The old "invalid API key" 401 problem is resolved by the automatic
+keyless fallback.
 
 ---
 
@@ -155,25 +163,22 @@ The dashboard is a static site — no build step required.
 
 ---
 
-## 🔑 API Key Setup
+## 🔑 API Key Setup (optional)
 
-The key is **never hardcoded** in `app.js`. It is read from an environment
-variable (or a browser global) so secrets stay out of version control.
+The dashboard works **with no setup** thanks to the keyless Open-Meteo
+fallback. To use **OpenWeatherMap** instead (same UI, different data source),
+supply a key — it is never hardcoded in `app.js`:
 
-1. Sign up at <https://openweathermap.org/api> and grab a free API key.
-2. In the browser, set the global before `app.js` runs:
-   ```html
-   <script>window.__OWM_API_KEY__ = "YOUR_REAL_KEY";</script>
-   <script src="app.js"></script>
-   ```
-   Or, when running under Node/a bundler, set the environment variable:
-   ```bash
-   # .env  (already gitignored)
-   OPENWEATHER_API_KEY=your_real_key
-   ```
-   A `.env.example` template is provided — copy it to `.env` and fill in your key.
+- **In the browser:** click the ⚙️ button in the app and paste your key (saved
+  to `localStorage`), or set the global before `app.js` runs:
+  ```html
+  <script>window.__OWM_API_KEY__ = "YOUR_REAL_KEY";</script>
+  <script src="app.js"></script>
+  ```
+- **Node / bundler:** set `OPENWEATHER_API_KEY` (see `.env.example`).
 
-> ⚠️ Never commit a real API key. The repo only contains the placeholder.
+> If a supplied OpenWeatherMap key is invalid, the app shows a clear error
+> instead of silently failing. No key = automatic keyless Open-Meteo.
 
 ---
 

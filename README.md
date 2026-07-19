@@ -170,13 +170,9 @@ The dashboard is a static site — no build step required.
 
 ## 🔗 Live Demo
 
-> Deploy this static site for free with **GitHub Pages**:
-> 1. Push the repo to GitHub.
-> 2. Go to **Settings → Pages → Source → main branch → root**.
-> 3. Your live URL will be:
->    `https://theecolboy.github.io/iyf-s10-week-06-theecolboy/`
+> This static site is deployed with **GitHub Pages** (main branch → root).
 >
-> (Replace the link above once deployment is active.)
+> 🔗 **Live Demo:** https://theecolboy.github.io/iyf-s10-week-06-theecolboy/
 
 ---
 

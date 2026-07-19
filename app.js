@@ -11,8 +11,14 @@
    - Bonus: 5-day forecast, °C/°F toggle, geolocation, dynamic background
    ========================================================================= */
 
-// NOTE: Replace with your own OpenWeatherMap API key.
-const API_KEY = "your_api_key_here";
+// API key resolution (no hardcoded secrets):
+// 1. Browser: set window.__OWM_API_KEY__ before loading app.js
+// 2. Node/build: process.env.OPENWEATHER_API_KEY
+// 3. Fallback placeholder (will show an "Invalid API key" error until set)
+const API_KEY =
+    (typeof window !== "undefined" && window.__OWM_API_KEY__) ||
+    (typeof process !== "undefined" && process.env && process.env.OPENWEATHER_API_KEY) ||
+    "your_api_key_here";
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 const FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast";
 const ICON_BASE = "https://openweathermap.org/img/wn/";

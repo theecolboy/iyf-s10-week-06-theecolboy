@@ -157,14 +157,23 @@ The dashboard is a static site — no build step required.
 
 ## 🔑 API Key Setup
 
-1. Sign up at <https://openweathermap.org/api> and grab a free API key.
-2. In `app.js`, replace:
-   ```javascript
-   const API_KEY = "your_api_key_here";
-   ```
-   with your real key.
+The key is **never hardcoded** in `app.js`. It is read from an environment
+variable (or a browser global) so secrets stay out of version control.
 
-> ⚠️ Never commit a real API key. Use environment variables in production.
+1. Sign up at <https://openweathermap.org/api> and grab a free API key.
+2. In the browser, set the global before `app.js` runs:
+   ```html
+   <script>window.__OWM_API_KEY__ = "YOUR_REAL_KEY";</script>
+   <script src="app.js"></script>
+   ```
+   Or, when running under Node/a bundler, set the environment variable:
+   ```bash
+   # .env  (already gitignored)
+   OPENWEATHER_API_KEY=your_real_key
+   ```
+   A `.env.example` template is provided — copy it to `.env` and fill in your key.
+
+> ⚠️ Never commit a real API key. The repo only contains the placeholder.
 
 ---
 

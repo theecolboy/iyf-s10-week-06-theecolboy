@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Directory - Lesson 12</title>
+    <link rel="stylesheet" href="user-directory.css">
+</head>
+<body>
+    <div id="app">
+        <h1>User Directory</h1>
+
+        <div class="controls">
+            <input type="text" id="search" placeholder="Search by name or email...">
+            <select id="sort">
+                <option value="asc">Name A-Z</option>
+                <option value="desc">Name Z-A</option>
+            </select>
+            <select id="city-filter">
+                <option value="">All cities</option>
+            </select>
+        </div>
+
+        <div id="loading">Loading...</div>
+        <div id="error" class="hidden"></div>
+        <div id="users-container"></div>
+
+        <hr>
+
+        <h2>Create a Post</h2>
+        <form id="post-form">
+            <input type="text" id="post-title" placeholder="Title" required>
+            <textarea id="post-body" placeholder="Body" required></textarea>
+            <input type="number" id="post-user" placeholder="User ID" value="1" required>
+            <button type="submit">Create Post</button>
+        </form>
+        <pre id="post-result" class="hidden"></pre>
+    </div>
+
+    <script src="user-directory.js"></script>
+</body>
+</html>

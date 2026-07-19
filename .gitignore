@@ -1,0 +1,14 @@
+# API keys / secrets
+.env
+.env.local
+*.local
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
